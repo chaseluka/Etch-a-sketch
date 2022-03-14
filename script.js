@@ -12,3 +12,8 @@ for (i = 0; i < 256; ++i) {
 };
 
 
+
+
+grid.addEventListener("mouseover", function(e) {
+   e.target.style.backgroundColor = '#000';
+  }, false);
