@@ -1,7 +1,7 @@
 
 
 .grid-container {
-    display: grid;
+    display: inline-grid;
     grid-template-columns: repeat(16, 30px);
     grid-template-rows: repeat(16, 30px);
     width: auto;
@@ -9,4 +9,14 @@
 
 .item {
     border: solid 0.5px #000;
+}
+
+.clear {
+    color: #000;
+    font-size: 30px;
+
+}
+
+.item-clear {
+    background-color: #fff;
 }
