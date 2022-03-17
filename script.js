@@ -4,6 +4,7 @@ const btnClear = document.getElementById('clear');
 const btnEraser = document.getElementById('eraser');
 const btnDraw = document.getElementById('draw');
 const slider = document.querySelector('.slider');
+let div = '';
 
 let clickCount = 0;
 let n = slider.value;
@@ -17,7 +18,7 @@ function gridLayout(){
 gridLayout();
 
 function createDiv() {
-    const div = document.createElement('div');
+    let div = document.createElement('div');
     grid.appendChild(div);
     div.classList.add('item');
     
@@ -42,33 +43,65 @@ slider.oninput = function slide() {
     removeAllChildNodes(grid);
     gridItems();
     gridLayout();
-};
+}
+    
+
+
+btnClear.addEventListener('click', function(){
+    div.classList.add('item-clear');
+});
+
+
+
 
 //Stylistic changes to the grid: draw, erase, clear.      
 
 function draw(e){
-        e.target.style.backgroundColor = '#000';
+    e.target.style.backgroundColor = '#000';
 }; 
 
-function utensilDraw(){
+function erase(e){
+    e.target.style.backgroundColor = '#fff';
+}; 
 
-    grid.addEventListener('click', function(){
-        clickCount++;
-
-        if (clickCount % 2 != 0){
-            grid.addEventListener('mouseover', draw, false);
-        }
-        
-        else if (clickCount % 2 == 0){
-            grid.removeEventListener('mouseover', draw, false);
-        };
-    });
-};
-
-function utensil(){
-    
-    if (btnDraw.addEventListener('click', utensilDraw()));
-
+function startDraw (e){
+    grid.addEventListener('mouseover', draw, false);
 }
 
-utensil();
+function stopDraw(){
+    grid.removeEventListener('mouseover', draw, false);
+}
+
+function startErase (){
+    grid.addEventListener('mouseover', erase, false);
+}
+
+function stopErase (){
+    grid.removeEventListener('mouseover', erase, false);
+}
+
+function utensil(){
+    btnDraw.addEventListener('click', function(e){
+        grid.removeEventListener('mousedown', startErase, false);
+        grid.removeEventListener('mousedown', stopErase, false);
+
+        if (grid.addEventListener('mousedown', startDraw, false));
+
+        else if (grid.addEventListener('mouseup', stopDraw, false)); 
+    });
+
+    btnEraser.addEventListener('click', function(e){
+        grid.removeEventListener('mousedown', startDraw, false);
+        grid.removeEventListener('mousedown', stopDraw, false);
+
+        if (grid.addEventListener('mousedown', startErase, false));
+
+        else if (grid.addEventListener('mouseup', stopErase, false));
+        
+    });
+
+    
+};
+utensil()
+
+
