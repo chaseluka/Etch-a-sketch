@@ -3,7 +3,9 @@ const grid = document.querySelector('.grid');
 const btnClear = document.getElementById('clear');
 const btnEraser = document.getElementById('eraser');
 const btnDraw = document.getElementById('draw');
+const btnRainbow = document.getElementById('rainbow');
 const slider = document.querySelector('.slider');
+
 let div = '';
 
 let clickCount = 0;
@@ -69,6 +71,13 @@ function erase(e){
     e.target.style.backgroundColor = '#fff';
 }; 
 
+function rainbow(e){
+    let r = Math.floor(Math.random()*256);
+    let g = Math.floor(Math.random()*256);
+    let b = Math.floor(Math.random()*256);
+    e.target.style.backgroundColor = `rgb(${r},${g},${b})`;
+}
+
 function startDraw (e){
     grid.addEventListener('mouseover', draw, false);
 }
@@ -86,10 +95,18 @@ function stopErase (){
     grid.removeEventListener('mouseover', erase, false);
 }
 
+function startRainbow(){
+    grid.addEventListener('mouseover', rainbow, false);
+}
+
+function stopRainbow(){
+    grid.removeEventListener('mouseover', rainbow, false)
+}
+
 function utensil(){
     btnDraw.addEventListener('click', function(e){
         grid.removeEventListener('mousedown', startErase, false);
-        grid.removeEventListener('mousedown', stopErase, false);
+        grid.removeEventListener('mousedown', startRainbow, false);
 
         if (grid.addEventListener('mousedown', startDraw, false));
 
@@ -98,13 +115,24 @@ function utensil(){
 
     btnEraser.addEventListener('click', function(e){
         grid.removeEventListener('mousedown', startDraw, false);
-        grid.removeEventListener('mousedown', stopDraw, false);
+        grid.removeEventListener('mousedown', startRainbow, false);
 
         if (grid.addEventListener('mousedown', startErase, false));
             
         else if (grid.addEventListener('mouseup', stopErase, false));
         
     });
+
+    btnRainbow.addEventListener('click', function(e){
+        grid.removeEventListener('mousedown', startDraw, false);
+        grid.removeEventListener('mousedown', startErase, false);
+
+        if (grid.addEventListener('mousedown', startRainbow, false));
+            
+        else if (grid.addEventListener('mouseup', stopRainbow, false));
+        
+    });
+
 };
 
 utensil()
