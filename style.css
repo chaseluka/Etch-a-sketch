@@ -12,7 +12,7 @@
 }
 
 .item {
-    border: solid 0.1px #333;
+    border: solid 0.1px #323232;
 }
 
 .clear {
@@ -35,3 +35,4 @@
 .slider:hover {
     opacity: 1;
 }
+
