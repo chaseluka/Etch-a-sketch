@@ -10,12 +10,6 @@ let clickCount = 0;
 let n = slider.value;
 
 //Grid creation/adjustment
-function gridLayout(){
-    grid.style.gridTemplateColumns = `repeat(${n}, auto)`;
-    grid.style.gridTemplateRows = `repeat(${n}, auto)`;
-
-};
-gridLayout();
 
 function createDiv() {
     let div = document.createElement('div');
@@ -23,6 +17,13 @@ function createDiv() {
     div.classList.add('item');
     
 };
+
+function gridLayout(){
+    grid.style.gridTemplateColumns = `repeat(${n}, auto)`;
+    grid.style.gridTemplateRows = `repeat(${n}, auto)`;
+
+};
+gridLayout();
 
 function gridItems (){
     for (i = 0; i < (n * n); ++i) {
@@ -38,23 +39,26 @@ function removeAllChildNodes(parent) {
     }
 };
 
-slider.oninput = function slide() {
-    n = this.value;
+
+//Slide function removes all previous child nodes and replaces them with the value of the slider. 
+
+slider.oninput = slide;
+
+
+function slide() {
+    n = slider.value;
     removeAllChildNodes(grid);
     gridItems();
     gridLayout();
 }
-    
 
+//Clear button, functions just as slide except it's static.
 
-btnClear.addEventListener('click', function(){
-    div.classList.add('item-clear');
-});
-
+btnClear.onclick = slide;
 
 
 
-//Stylistic changes to the grid: draw, erase, clear.      
+//Stylistic changes to the grid: draw and erase. Allows each respective change to the grid depending on button clicked.       
 
 function draw(e){
     e.target.style.backgroundColor = '#000';
@@ -74,6 +78,7 @@ function stopDraw(){
 
 function startErase (){
     grid.addEventListener('mouseover', erase, false);
+    
 }
 
 function stopErase (){
@@ -95,13 +100,12 @@ function utensil(){
         grid.removeEventListener('mousedown', stopDraw, false);
 
         if (grid.addEventListener('mousedown', startErase, false));
-
+            
         else if (grid.addEventListener('mouseup', stopErase, false));
         
     });
-
-    
 };
+
 utensil()
 
 
