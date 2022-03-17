@@ -1,23 +1,24 @@
-
-
 .grid-container {
+    display: flex;
+    min-width: 500px;
+    min-height: 500px;
+    justify-content: center;
+}
+
+.grid {
     display: inline-grid;
-    width: 480px;
-    height: 480px;
+    width: 500px;
+    height: 500px;
 }
 
 .item {
-    border: solid 0.5px #000;
+    border: solid 0.1px #333;
 }
 
 .clear {
     color: #000;
     font-size: 30px;
 
-}
-
-.item-clear {
-    background-color: none;
 }
 
 .slider {
@@ -34,4 +35,3 @@
 .slider:hover {
     opacity: 1;
 }
-

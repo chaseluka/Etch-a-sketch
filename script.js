@@ -1,5 +1,5 @@
 
-const grid = document.querySelector('.grid-container');
+const grid = document.querySelector('.grid');
 const btnClear = document.getElementById('clear');
 const btnEraser = document.getElementById('eraser');
 const btnDraw = document.getElementById('draw');
@@ -52,16 +52,17 @@ function slide() {
     gridLayout();
 }
 
-//Clear button, functions just as slide except it's static.
+//Clear button, functions just as slide() except it's static.
 
 btnClear.onclick = slide;
 
 
 
-//Stylistic changes to the grid: draw and erase. Allows each respective change to the grid depending on button clicked.       
+//Stylistic changes to the grid: draw and erase. Allows each respective change to the 
+//grid depending on button clicked.       
 
 function draw(e){
-    e.target.style.backgroundColor = '#000';
+    e.target.style.backgroundColor = '#292929';
 }; 
 
 function erase(e){
