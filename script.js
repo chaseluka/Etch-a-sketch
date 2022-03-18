@@ -68,7 +68,7 @@ function draw(e){
 }; 
 
 function erase(e){
-    e.target.style.backgroundColor = '#fff';
+    e.target.style.backgroundColor = '#dfdfdf';
 }; 
 
 function rainbow(e){
@@ -105,6 +105,9 @@ function stopRainbow(){
 
 function utensil(){
     btnDraw.addEventListener('click', function(e){
+        btnDraw.style.cssText = 'background-color: #333; color: #dfdfdf; border: #333;'
+        btnEraser.style.cssText = 'none';
+        btnRainbow.style.cssText = 'none';
         grid.removeEventListener('mousedown', startErase, false);
         grid.removeEventListener('mousedown', startRainbow, false);
 
@@ -114,6 +117,9 @@ function utensil(){
     });
 
     btnEraser.addEventListener('click', function(e){
+        btnEraser.style.cssText = 'background-color: #333; color: #dfdfdf; border: #333;'
+        btnDraw.style.cssText = 'none';
+        btnRainbow.style.cssText = 'none';
         grid.removeEventListener('mousedown', startDraw, false);
         grid.removeEventListener('mousedown', startRainbow, false);
 
@@ -124,6 +130,9 @@ function utensil(){
     });
 
     btnRainbow.addEventListener('click', function(e){
+        btnRainbow.style.cssText = 'background-color: #333; color: #dfdfdf; border: #333;'
+        btnEraser.style.cssText = 'none';
+        btnDraw.style.cssText = 'none';
         grid.removeEventListener('mousedown', startDraw, false);
         grid.removeEventListener('mousedown', startErase, false);
 
@@ -135,6 +144,7 @@ function utensil(){
 
 };
 
-utensil()
+utensil();
+
 
 

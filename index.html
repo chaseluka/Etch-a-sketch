@@ -8,14 +8,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button type="button" id="eraser">Eraser</button>
-    <button type="button" id="clear">Clear</button>
-    <button type="button" id="draw">Draw</button>
-    <button type="button" id="rainbow">Go Crazy!</button>
-    <div class="slidecontainer">
-        <input type="range" min="16" max="100" value="16" class="slider"> 
+    <h1>Etch-a-Sketch</h1> 
+    
+    <div class="buttons">
+        <button type="button" id="draw">Draw</button>
+        <button type="button" id="eraser">Eraser</button>
+        <button type="button" id="rainbow">
+            <span style="color: #0d1589">G</span><span style="color: #1824de">o</span>
+            <span style="color: #1f9733">C</span><span style="color: #d8d514">r</span><span style="color: #ffa500">a</span><span style="color: #c34014">z</span><span style="color: #0d1589">y</span>!
+        </button>
+        <button type="button" id="clear">Clear</button>
     </div>
+
     <div class="grid-container">
+        <div class="slider-content-container">
+            <div class="large-text">Large Pen</div>
+            <div class="slider-container">
+                <input type="range" min="16" max="100" value="16" class="slider"> 
+            </div>
+            <div class="small-text">Small Pen</div>
+    
+        </div>
         <div class="grid"></div>
     </div>
     
